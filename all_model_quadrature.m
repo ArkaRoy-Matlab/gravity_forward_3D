@@ -44,7 +44,7 @@ save(fullfile('.', 'output','gravity_fixed_density_quadrature1.txt'),'gz','-Asci
 save(fullfile('.', 'output','x_meshgrid_fixed_density.txt'),'XX1','-Ascii')
 save(fullfile('.', 'output','y_meshgrid_fixed_density.txt'),'YY1','-Ascii')
 tic
-[XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy,rho,z0);
+[XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy,rho,z0,8);
 t12=toc;
 save(fullfile('.', 'output','gravity_fixed_density_quadrature2.txt'),'gz','-Ascii')
 fprintf('For model 1 standard fft computational time =%f\n',t12)
@@ -80,7 +80,7 @@ save(fullfile('.', 'output','gravity_exp_density_quadrature1.txt'), 'gz', '-Asci
 save(fullfile('.', 'output','x_meshgrid_exp_density.txt'), 'XX1', '-Ascii')
 save(fullfile('.', 'output','y_meshgrid_exp_density.txt'), 'YY1', '-Ascii')
 tic
-[XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy,rho,z0);
+[XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy,rho,z0,8);
 t22=toc;
 save(fullfile('.', 'output','gravity_exp_density_quadrature2.txt'),'gz','-Ascii')
 fprintf('For model 2 standard fft computational time =%f\n',t22)
@@ -116,7 +116,7 @@ save(fullfile('.', 'output','gravity_polynomial_density_quadrature1.txt'), 'gz',
 save(fullfile('.', 'output','x_meshgrid_polynomial_density.txt'), 'XX1', '-Ascii')
 save(fullfile('.', 'output','y_meshgrid_polynomial_density.txt'), 'YY1', '-Ascii')
 tic
-[XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy,rho,z0);
+[XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy,rho,z0,8);
 t32=toc;
 save(fullfile('.', 'output','gravity_polynomial_density_quadrature2.txt'), 'gz', '-Ascii')
 fprintf('For model 3 standard fft computational time =%f\n',t32)
@@ -152,7 +152,7 @@ save(fullfile('.', 'output','gravity_complex_density_quadrature1.txt'), 'gz', '-
 save(fullfile('.', 'output','x_meshgrid_complex_density.txt'), 'XX1', '-Ascii')
 save(fullfile('.', 'output','y_meshgrid_complex_density.txt'), 'YY1', '-Ascii')
 tic
-[XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy,rho,z0);
+[XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy,rho,z0,8);
 t42=toc;
 save(fullfile('.', 'output','gravity_complex_density_quadrature2.txt'),'gz','-Ascii')
 fprintf('For model 4 standard fft computational time =%f\n',t42)

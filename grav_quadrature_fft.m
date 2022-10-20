@@ -11,7 +11,7 @@
 %%Matlab function for finding gravity anomalies for topographic surfaces
 %%having any 3D density contrast quadrature based standard FFT method
 
-function [XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy,rho,z0)
+function [XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy,rho,z0,L)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     %input: 
@@ -21,7 +21,7 @@ function [XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy
     %   yy     = 1D y grid locations in m
     %   rho    = density function in kg/m^3
     %   z0     = observation point in m
-    
+    %   L      = Grid expansion ratio
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
 
     %output:
@@ -81,8 +81,8 @@ function [XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy
     
     [m,n]=size(XX1); 
     %New length and width of data
-    m_new=2*m;
-    n_new=2*n;
+    m_new=L*m;
+    n_new=L*n;
     %frequency fourier transform
     kx=(2*pi/(m_new*dx)).*[(0:1:floor(m_new/2)-1) (floor(-m_new/2):1:-1)];
     ky=(2*pi/(n_new*dx)).*[(0:1:floor(n_new/2)-1) (floor(-n_new/2):1:-1)];
@@ -110,8 +110,8 @@ function [XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy
             end
             ss1=ss1.*coef1; ss2=ss2.*coef2;   
                    
-            ss1_pad=padarray(ss1,[m/2 n/2],mean(ss1(:)),'both');
-            ss2_pad=padarray(ss2,[m/2 n/2],mean(ss2(:)),'both');
+            ss1_pad=padarray(ss1,[ceil(((L-1)/2)*n) ceil(((L-1)/2)*m)],0,'both');
+            ss2_pad=padarray(ss2,[ceil(((L-1)/2)*n) ceil(((L-1)/2)*m)],0,'both');
             
             tongF1=tongF1+(((-abs(K)).^(nn))./(factorial(nn))).*fft2(ss1_pad);
             tongF2=tongF2+(((-abs(K)).^(nn))./(factorial(nn))).*fft2(ss2_pad);
@@ -121,5 +121,5 @@ function [XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy
         g0=(ifft2(Fg));
 
     %%extracting data without padding
-    gz=g0(m/2+1:(m/2)+n,n/2+1:(n/2)+m);
+    gz=g0(ceil(((L-1)/2)*n)+1:ceil(((L-1)/2)*n)+n,ceil(((L-1)/2)*m)+1:ceil(((L-1)/2)*m)+m);
 end

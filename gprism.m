@@ -28,7 +28,7 @@ function gz=gprism(x1,y1,z1,x2,y2,z2,xgv,ygv,zp,rho)
 % Blakely, R. J., 1996, Potential theory in gravity and magnetic applications:
 % Cambridge University Press.
 %
-gamma=6.67259e-11;
+gamma=6.67408*10^-11;
 si2mg=1.e5;
 km2m=1.e3;
 

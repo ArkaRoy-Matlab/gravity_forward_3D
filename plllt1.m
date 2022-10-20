@@ -21,19 +21,17 @@ xx=importdata(fullfile('.', 'input','synthetic_x_fixed_density.txt'));
 yy=importdata(fullfile('.', 'input','synthetic_y_fixed_density.txt'));
 
 ccmap1=makecolormap({'green','yellow','khaki','olive','brown','silver'}, 128);
-%ccmap1=makecolormap({'navy','lightseagreen','gold','magenta'}, 128);
-ccmap2=makecolormap({'navy','firebrick','red','orange','violet','darkorchid','mediumspringgreen'}, 128);
+ccmap2=makecolormap({'navy','lightseagreen','gold','magenta'}, 128);
+ccmap3=makecolormap({'navy','firebrick','red','orange','violet','darkorchid','mediumspringgreen'}, 128);
 %plotting the topography
 [XX,YY]=meshgrid(xx,yy);
 XX=XX./1000; YY=YY./1000;
 figure(1)
-ax1=subplot(2,1,2);
+ax1=subplot(2,2,2);
 %plotting the data
 surf(XX,YY,data1./10^3)
 hold on;
 [C,h] = contour3(XX,YY,data1./10^3,20,'k');
-surf(XX,YY,data2./10^3)
-[C,h] = contour3(XX,YY,data2./10^3,20,'k');
 shading interp
 set(gca, 'Zdir', 'reverse')
 
@@ -45,12 +43,32 @@ ylabel('y (km)')
 zlabel('Depth (km)')
 %title('depth data plot')
 set(gca, 'ZDir','reverse')
-grid on;
-box on;
 c = colorbar;
 c.Label.String = 'Depth (km)';
 xlim([min(XX(:)) max(XX(:))])
 ylim([min(YY(:)) max(YY(:))])
+
+ax1=subplot(2,2,4);
+%plotting the data
+surf(XX,YY,data2./10^3)
+hold on
+[C,h] = contour3(XX,YY,data2./10^3,20,'k');
+shading interp
+set(gca, 'Zdir', 'reverse')
+
+colormap(ax1,ccmap2)
+view(3);
+
+xlabel('x (km)')
+ylabel('y (km)')
+zlabel('Depth (km)')
+%title('depth data plot')
+set(gca, 'ZDir','reverse')
+c = colorbar;
+c.Label.String = 'Depth (km)';
+xlim([min(XX(:)) max(XX(:))])
+ylim([min(YY(:)) max(YY(:))])
+
 
 %importing anomaly data for fixed density
 gz=importdata(fullfile('.', 'output','gravity_fixed_density_prism.txt')); 
@@ -61,10 +79,10 @@ XX1=XX1./1000; YY1=YY1./1000;
 
 %plotting the gravity anomalies
 figure(1)
-ax2=subplot(2,1,1);
+ax2=subplot(2,2,[1,3]);
 surf(XX1,YY1,gz)
 
-colormap(ax2,ccmap2)
+colormap(ax2,ccmap3)
 shading interp
 xlabel('x (km)')
 ylabel('y (km)')
@@ -77,6 +95,7 @@ c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
 xlim([min(XX1(:)) max(XX1(:))])
 ylim([min(YY1(:)) max(YY1(:))])
+
 %title('gravity anomaly gauss fft model')
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,15 +112,14 @@ yy=importdata(fullfile('.', 'input','synthetic_y_exp_density.txt'));
 [XX,YY]=meshgrid(xx,yy);
 XX=XX./1000; YY=YY./1000;
 figure(2)
-ax1=subplot(2,1,2);
+ax1=subplot(2,2,2);
 %plotting the data
 surf(XX,YY,data1./10^3)
 hold on;
 [C,h] = contour3(XX,YY,data1./10^3,20,'k');
-surf(XX,YY,data2./10^3)
-[C,h] = contour3(XX,YY,data2./10^3,20,'k');
 shading interp
 set(gca, 'Zdir', 'reverse')
+
 colormap(ax1,ccmap1)
 view(3);
 
@@ -110,15 +128,35 @@ ylabel('y (km)')
 zlabel('Depth (km)')
 %title('depth data plot')
 set(gca, 'ZDir','reverse')
-grid on;
-box on;
 c = colorbar;
 c.Label.String = 'Depth (km)';
 xlim([min(XX(:)) max(XX(:))])
 ylim([min(YY(:)) max(YY(:))])
 
-%importing anomaly data
-gz=importdata(fullfile('.', 'output','gravity_exp_density_layer.txt')); 
+ax1=subplot(2,2,4);
+%plotting the data
+surf(XX,YY,data2./10^3)
+hold on
+[C,h] = contour3(XX,YY,data2./10^3,20,'k');
+shading interp
+set(gca, 'Zdir', 'reverse')
+
+colormap(ax1,ccmap2)
+view(3);
+
+xlabel('x (km)')
+ylabel('y (km)')
+zlabel('Depth (km)')
+%title('depth data plot')
+set(gca, 'ZDir','reverse')
+c = colorbar;
+c.Label.String = 'Depth (km)';
+xlim([min(XX(:)) max(XX(:))])
+ylim([min(YY(:)) max(YY(:))])
+
+
+%importing anomaly data for fixed density
+gz=importdata(fullfile('.', 'output','gravity_exp_density_analytic.txt')); 
 XX1=importdata(fullfile('.', 'output','x_meshgrid_exp_density.txt')); 
 YY1=importdata(fullfile('.', 'output','y_meshgrid_exp_density.txt')); 
 
@@ -126,8 +164,10 @@ XX1=XX1./1000; YY1=YY1./1000;
 
 %plotting the gravity anomalies
 figure(2)
-ax2=subplot(2,1,1);
+ax2=subplot(2,2,[1,3]);
 surf(XX1,YY1,gz)
+
+colormap(ax2,ccmap3)
 shading interp
 xlabel('x (km)')
 ylabel('y (km)')
@@ -135,12 +175,12 @@ zlabel('Gravity anomaly (mGal)')
 view(2)
 grid on;
 box on;
-colormap(ax2,ccmap2)
+%
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
 xlim([min(XX1(:)) max(XX1(:))])
 ylim([min(YY1(:)) max(YY1(:))])
-%title('gravity anomaly gauss fft model')
+
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -156,15 +196,14 @@ yy=importdata(fullfile('.', 'input','synthetic_y_polynomial_density.txt'));
 [XX,YY]=meshgrid(xx,yy);
 XX=XX./1000; YY=YY./1000;
 figure(3)
-ax1=subplot(2,1,2);
+ax1=subplot(2,2,2);
 %plotting the data
 surf(XX,YY,data1./10^3)
 hold on;
 [C,h] = contour3(XX,YY,data1./10^3,20,'k');
-surf(XX,YY,data2./10^3)
-[C,h] = contour3(XX,YY,data2./10^3,20,'k');
 shading interp
 set(gca, 'Zdir', 'reverse')
+
 colormap(ax1,ccmap1)
 view(3);
 
@@ -173,12 +212,32 @@ ylabel('y (km)')
 zlabel('Depth (km)')
 %title('depth data plot')
 set(gca, 'ZDir','reverse')
-grid on;
-box on;
 c = colorbar;
 c.Label.String = 'Depth (km)';
 xlim([min(XX(:)) max(XX(:))])
 ylim([min(YY(:)) max(YY(:))])
+
+ax1=subplot(2,2,4);
+%plotting the data
+surf(XX,YY,data2./10^3)
+hold on
+[C,h] = contour3(XX,YY,data2./10^3,20,'k');
+shading interp
+set(gca, 'Zdir', 'reverse')
+
+colormap(ax1,ccmap2)
+view(3);
+
+xlabel('x (km)')
+ylabel('y (km)')
+zlabel('Depth (km)')
+%title('depth data plot')
+set(gca, 'ZDir','reverse')
+c = colorbar;
+c.Label.String = 'Depth (km)';
+xlim([min(XX(:)) max(XX(:))])
+ylim([min(YY(:)) max(YY(:))])
+
 
 %importing anomaly data
 gz=importdata(fullfile('.', 'output','gravity_polynomial_density_layer.txt')); 
@@ -189,7 +248,7 @@ XX1=XX1./1000; YY1=YY1./1000;
 
 %plotting the gravity anomalies
 figure(3)
-ax2=subplot(2,1,1);
+ax2=subplot(2,2,[1,3]);
 surf(XX1,YY1,gz)
 shading interp
 xlabel('x (km)')
@@ -198,7 +257,7 @@ zlabel('Gravity anomaly (mGal)')
 view(2)
 grid on;
 box on;
-colormap(ax2,ccmap2)
+colormap(ax2,ccmap3)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
 xlim([min(XX1(:)) max(XX1(:))])
@@ -220,15 +279,14 @@ yy=importdata(fullfile('.', 'input','synthetic_y_complex_density.txt'));
 [XX,YY]=meshgrid(xx,yy);
 XX=XX./1000; YY=YY./1000;
 figure(4)
-ax1=subplot(2,1,2);
+ax1=subplot(2,2,2);
 %plotting the data
 surf(XX,YY,data1./10^3)
 hold on;
 [C,h] = contour3(XX,YY,data1./10^3,20,'k');
-surf(XX,YY,data2./10^3)
-[C,h] = contour3(XX,YY,data2./10^3,20,'k');
 shading interp
 set(gca, 'Zdir', 'reverse')
+
 colormap(ax1,ccmap1)
 view(3);
 
@@ -237,8 +295,27 @@ ylabel('y (km)')
 zlabel('Depth (km)')
 %title('depth data plot')
 set(gca, 'ZDir','reverse')
-grid on;
-box on;
+c = colorbar;
+c.Label.String = 'Depth (km)';
+xlim([min(XX(:)) max(XX(:))])
+ylim([min(YY(:)) max(YY(:))])
+
+ax1=subplot(2,2,4);
+%plotting the data
+surf(XX,YY,data2./10^3)
+hold on
+[C,h] = contour3(XX,YY,data2./10^3,20,'k');
+shading interp
+set(gca, 'Zdir', 'reverse')
+
+colormap(ax1,ccmap2)
+view(3);
+
+xlabel('x (km)')
+ylabel('y (km)')
+zlabel('Depth (km)')
+%title('depth data plot')
+set(gca, 'ZDir','reverse')
 c = colorbar;
 c.Label.String = 'Depth (km)';
 xlim([min(XX(:)) max(XX(:))])
@@ -253,7 +330,7 @@ XX1=XX1./1000; YY1=YY1./1000;
 
 %plotting the gravity anomalies
 figure(4)
-ax2=subplot(2,1,1);
+ax2=subplot(2,2,[1,3]);
 surf(XX1,YY1,gz)
 shading interp
 xlabel('x (km)')
@@ -262,7 +339,7 @@ zlabel('Gravity anomaly (mGal)')
 view(2)
 grid on;
 box on;
-colormap(ax2,ccmap2)
+colormap(ax2,ccmap3)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
 xlim([min(XX1(:)) max(XX1(:))])
@@ -323,7 +400,7 @@ zlabel('Gravity anomaly (mGal)')
 view(2)
 grid on;
 box on;
-colormap(ax2,ccmap2)
+colormap(ax2,ccmap3)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
 xlim([min(XX1(:)) max(XX1(:))])
