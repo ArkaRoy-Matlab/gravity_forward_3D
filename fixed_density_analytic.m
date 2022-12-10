@@ -91,5 +91,6 @@ for i2=1:1:n2
     end   
 end
 t=toc;
+fprintf('Computation time for fixed density analytic model is %f\n',t)
 %save the gravity anomay 
 save(fullfile('.', 'output','gravity_fixed_density_analytic.txt'), 'gz', '-Ascii')

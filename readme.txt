@@ -84,6 +84,7 @@ This is a help file for a description of all Data, Source Code, and Subroutine u
 		(xiii)sifft2 
 		(xiv) lgwt
 		(xv)  makecolormap
+		(xvi) gtesseroid
 
 	(i)  center_grid: Matlab function for creating center grid of any 2D data using mean of adjacent grids. 
 	(ii) find_delta: Matlab function for finding best delta for any topographic surface for approximating exponential term in Taylor series used in Gauss-FFT forward Modelling. 
@@ -117,6 +118,8 @@ which you can evaluate at any x in [a,b]. Simply evaluate it at all of the value
 	
 	(xv) makecolormap.m - Matlab function for creating colormap as per user choice, all color name and corresponding color representation can be found from 
 the web address  http://kodama.fubuki.info/wiki/wiki.cgi/GrADS/script/color.gs?lang=en
+	
+	(xvi) gtesseroid.m - Matlab function for finding gravity anomalies due to any tesseroid 
 
 	3. Matlab scripts:
 		(i)    all_model_layer
@@ -127,7 +130,10 @@ the web address  http://kodama.fubuki.info/wiki/wiki.cgi/GrADS/script/color.gs?l
 		(vi)   polynomial_density_analytic
 		(vii)  plllt1
 		(viii) plllt2
-		(ix)   generalized
+		(ix)  plllt3
+		(x)   plllt4
+		(xi)  generalized
+		(xii) tesseroid_gaussfft_comparision
 
 	(i) all_model_layer: Matlab code for finding gravity anomalies for different topographic surfaces and corresponding density contrasts using vertically sliced horizontal layers.
 	
@@ -145,8 +151,14 @@ the web address  http://kodama.fubuki.info/wiki/wiki.cgi/GrADS/script/color.gs?l
 
 	(viii) plllt2: Matlab code for plotting all synthetic topographic surfaces and corresponding gauss FFT and standard FFT quadrature based forward gravity anomalies.
 
-  	(ix) generalized: A generalized matlab code to evaluate gravity anomalies by any user by providing the input data. 	
+  	(ix) plllt3: Matlab code for plotting of rmse and time for different models for different grid expansion ratio of quadrature based standard FFT method 
+	
+	(x) plllt4: Matlab code for plotting all tesseroid and Gaussfft based models and comparing the results:
+	
+	(xi) generalized: A generalized matlab code to evaluate gravity anomalies by any user by providing the input data. 	
 
-    by running this code plllt1.m, you can reproduce Figures 2, 4, 6, 8, 10, and 11 in the manuscript.
+	(xii) tesseroid_gaussfft_comparision: Matlab comparision code for tesseroid model and gauss_fft based forward model for finding gravity anomalies of topographic mass having fixed density distribution
+      
+        by running this code plllt1.m, you can reproduce Figures 2, 4, 6, 8, 10, and 11 in the manuscript.
 	by running this code plllt2.m, you can reproduce Figures 3, 5, 7, and 9 in the manuscript.
 

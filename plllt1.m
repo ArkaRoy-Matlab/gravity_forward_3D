@@ -87,9 +87,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 %
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -172,9 +172,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 %
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -254,9 +254,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap3)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -336,9 +336,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap3)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -397,9 +397,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap3)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';

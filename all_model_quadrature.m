@@ -49,7 +49,7 @@ t12=toc;
 save(fullfile('.', 'output','gravity_fixed_density_quadrature2.txt'),'gz','-Ascii')
 fprintf('For model 1 standard fft computational time =%f\n',t12)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%
 %exponential density model
 %importing topography data
 data1=importdata(fullfile('.', 'input','synthetic_topo_exp_density_shallower_layer.txt'));
@@ -85,7 +85,7 @@ t22=toc;
 save(fullfile('.', 'output','gravity_exp_density_quadrature2.txt'),'gz','-Ascii')
 fprintf('For model 2 standard fft computational time =%f\n',t22)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%
 %polynomial density model
 %importing topography data
 data1=importdata(fullfile('.', 'input','synthetic_topo_polynomial_density_shallower_layer.txt'));
@@ -99,8 +99,8 @@ yy=importdata(fullfile('.', 'input','synthetic_y_polynomial_density.txt'));
 z0=0;
 
 %density contrast
-rho=@(x,y,z) -300-0.3435.*10^-5.*z-0.6764.*10^-7.*z.^2-0.04247.*10^-11.*z.^3;  %polynomial
-
+%rho=@(x,y,z) -300-0.3435.*10^-5.*z-0.6764.*10^-7.*z.^2-0.04247.*10^-11.*z.^3;  %polynomial
+rho=@(x,y,z) -300-0.1435.*10^-3.*z-0.1764.*10^-5.*z.^2-0.4247.*10^-10.*z.^3;  %polynomial
 %number of gauss quadrature node
 Mx=2; My=2; 
 tic
@@ -135,7 +135,7 @@ yy=importdata(fullfile('.', 'input','synthetic_y_complex_density.txt'));
 z0=0;
 
 %density contrast
-rho=@(x,y,z) ((18.5^3)./(-0.25-0.1711.*z.^2.*10^-7))+(163+6.36*10^-7*x).*cos(3.2+9*10^-7.*y);  %hyperbolic
+rho=@(x,y,z) ((7^3)./(-0.25-0.1711.*z.^2.*10^-7))+(163+6.36*10^-7*x).*cos(3.2+9*10^-7.*y);  %hyperbolic
 
 %number of gauss quadrature node
 Mx=2; My=2; 

@@ -44,11 +44,11 @@ for ii=1:m-1
         xp1=xx(ii)*10^-3; xp2=xx(ii+1)*10^-3;  %x grid for each prism
         yp1=yy(jj)*10^-3; yp2=yy(jj+1)*10^-3;  %y gris for each prism
         %mean depth for each prism 
-        zp1=data1_g(ii,jj)*10^-3; %shallower depth
-        zp2=data2_g(ii,jj)*10^-3; %deeper depth
+        zp1=data1_g(jj,ii)*10^-3; %shallower depth
+        zp2=data2_g(jj,ii)*10^-3; %deeper depth
         gz=gz+gprism(xp1,yp1,zp1,xp2,yp2,zp2,xx1*10^-3,yy1*10^-3,z0,rho);
     end
 end
-gz=gz';
 t=toc;
+fprintf('Computation time for fixed density prism model is %f\n',t)
 save(fullfile('.', 'output','gravity_fixed_density_prism.txt'),'gz', '-Ascii')

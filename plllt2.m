@@ -34,9 +34,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -57,9 +57,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
 c.Label.String = '|Error| (mGal)';
@@ -74,9 +74,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -92,9 +92,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
 c.Label.String = '|Error| (mGal)';
@@ -108,9 +108,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -126,9 +126,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
 c.Label.String = '|Error| (mGal)';
@@ -177,9 +177,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -200,9 +200,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
 c.Label.String = '|Error| (mGal)';
@@ -217,9 +217,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -235,9 +235,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
 c.Label.String = '|Error| (mGal)';
@@ -251,9 +251,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -269,9 +269,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
 c.Label.String = '|Error| (mGal)';
@@ -318,9 +318,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -331,7 +331,7 @@ dd1=abs(gz_analytical-gz_true);
 dd2=abs(gz_gauss_fft-gz_true);
 dd3=abs(gz_fft-gz_true);
 dd_min=min([dd1(:);dd2(:);dd3(:)]); dd_max=max([dd1(:);dd2(:);dd3(:)]);
-dd_max=0.2;
+
 figure(7)
 ax2=subplot(1,2,2);
 surf(XX1,YY1,dd1)
@@ -341,9 +341,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
 c.Label.String = '|Error| (mGal)';
@@ -358,9 +358,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -376,9 +376,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
 c.Label.String = '|Error| (mGal)';
@@ -392,9 +392,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -410,9 +410,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
 c.Label.String = '|Error| (mGal)';
@@ -463,9 +463,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -481,12 +481,12 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
-c.Label.String = 'log_{10}(Error) (mGal)';
+c.Label.String = '|Error| (mGal)';
 xlim([min(XX1(:)) max(XX1(:))])
 ylim([min(YY1(:)) max(YY1(:))])
 
@@ -497,9 +497,9 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
@@ -515,12 +515,12 @@ shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
-c.Label.String = 'log_{10}(Error) (mGal)';
+c.Label.String = '|Error| (mGal)';
 xlim([min(XX1(:)) max(XX1(:))])
 ylim([min(YY1(:)) max(YY1(:))])
 
@@ -552,30 +552,30 @@ YY1=importdata(fullfile('.', 'output','y_meshgrid_real_density.txt'));
 XX1=XX1*10^-3; YY1=YY1*10^-3; 
 gz_gauss_fft=importdata(fullfile('.', 'output','gravity_real_density_quadrature.txt')); 
 figure(12)
-ax1=subplot(1,2,1);
+ax1=subplot(2,1,1);
 surf(XX1,YY1,gz_gauss_fft)
 shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Gravity anomaly (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax1,ccmap2)
 c = colorbar;
 c.Label.String = 'Gravity anomaly (mGal)';
 xlim([min(XX1(:)) max(XX1(:))])
 ylim([min(YY1(:)) max(YY1(:))])
 figure(12)
-ax2=subplot(1,2,2);
+ax2=subplot(2,1,2);
 surf(XX1,YY1,abs(gz_gauss_fft-gz_true))
 shading interp
 xlabel('x (km)')
 ylabel('y (km)')
 zlabel('Error (mGal)')
+set(gca,'TickDir','out');
 view(2)
 grid on;
-box on;
 colormap(ax2,ccmap1)
 c = colorbar;
 c.Label.String = '|Error| (mGal)';

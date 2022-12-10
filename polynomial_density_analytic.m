@@ -48,8 +48,8 @@ gz=0;
 %gravitational constant
 G=6.67408*10^-11; %in m^3kg^-1s^-2
 %density distribution
-rho=@(x,y,z) -300-0.3435.*10^-5.*z-0.6764.*10^-7.*z.^2-0.04247.*10^-11.*z.^3;  %polynomial
-
+%rho=@(x,y,z) -300-0.3435.*10^-5.*z-0.6764.*10^-7.*z.^2-0.04247.*10^-11.*z.^3;  %polynomial
+rho=@(x,y,z) -300-0.1435.*10^-3.*z-0.1764.*10^-5.*z.^2-0.4247.*10^-10.*z.^3;  %polynomial
 %dimension of new observation grid
 m_new=length(xx1); n_new=length(yy1);
 %wavevectors
@@ -58,8 +58,11 @@ nx1=ceil(-m_new/2);nx2=ceil(m_new/2-1);
 ny1=ceil(-n_new/2);ny2=ceil(n_new/2-1);
 NX=(nx1:1:nx2)';NY=(ny1:1:ny2)';% Column vector
 [KX0,KY0]=meshgrid(dkx*NX,dky*NY);
-a0=-300; a1=-0.3435.*10^-5; 
-a2=-0.6764.*10^-7; a3=-0.04247.*10^-11;
+%a0=-300; a1=-0.3435.*10^-5; 
+%a2=-0.6764.*10^-7; a3=-0.04247.*10^-11;
+
+a0=-300; a1=-0.1435.*10^-3; 
+a2=-0.1764.*10^-5; a3=-0.4247.*10^-10;
 
 A1=(a0+a1.*delta1+a2.*delta1.^2+a3.*delta1.^3);
 A2=(a1+2*a2*delta1+3*a3*delta1^2);
@@ -87,7 +90,7 @@ for i2=1:1:n2
         hs2=2*pi*G.*exp(abs(K).*z0).*exp(-abs(K).*delta2);
         tongF1=0; tongF2=0;
         %Taylor series sum
-        for im=1:30
+        for im=1:36
               im=im-1;
               ss11=A1.*((deltah1).^(im+1)-(-delta1).^(im+1))./(im+1); ss21=B1.*((deltah2).^(im+1)-(-delta2).^(im+1))./(im+1);
               ss12=A2.*((deltah1).^(im+2)-(-delta1).^(im+2))./(im+2); ss22=B2.*((deltah2).^(im+2)-(-delta2).^(im+2))./(im+2);
@@ -108,5 +111,6 @@ for i2=1:1:n2
     end   
 end
 t=toc;
+fprintf('Computation time for polynomial density analytic model is %f\n',t)
 %save the gravity anomay 
 save(fullfile('.', 'output','gravity_polynomial_density_analytic.txt'), 'gz', '-Ascii')

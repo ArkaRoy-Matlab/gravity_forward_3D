@@ -77,6 +77,7 @@ function [XX1, YY1, gz, delta1, delta2, N]=grav_quadrature_fft(data1,data2,xx,yy
     N1=find_nodes(XX1,YY1,coef1,rho);
     N2=find_nodes(XX1,YY1,coef2,rho);
     N=max([N1 N2]);
+    %N=2*N;
     [y,w]=lgwt(N,-1,1);
     
     [m,n]=size(XX1); 

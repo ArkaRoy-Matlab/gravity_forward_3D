@@ -64,7 +64,7 @@ dy=yy(2)-yy(1);
 [Abscissae_y,Wy]=lgwt(2*My,0,1);
 n1=length(Wx);
 n2=length(Wy)/2;
-gz=0;
+
 %gravitational constant
 G=6.67408*10^-11; %in m^3kg^-1s^-2
 

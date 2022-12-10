@@ -38,8 +38,10 @@ function [x_g,y_g,data_g]=center_grid(x,y,data)
         
         data_g=(A1+A2+A3+A4)/4;
         %new center grids x and data
-        x_g=x(1)+(dx/2):dx:x(end)-(dx/2);
-        y_g=y(1)+(dy/2):dy:y(end)-(dx/2);
+        %x_g=x(1)+(dx/2):dx:x(end)-(dx/2);
+        %y_g=y(1)+(dy/2):dy:y(end)-(dx/2);
+        x_g=linspace(x(1)+(dx/2),x(end)-(dx/2),m-1);
+        y_g=linspace(y(1)+(dy/2),y(end)-(dy/2),n-1);
     else
         msg = 'dimension mismatch of x, y and corresponding data';
         error(msg)
